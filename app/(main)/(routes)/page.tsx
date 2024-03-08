@@ -1,10 +1,11 @@
+import { ModeToggle } from '@/components/ui/mode-toggle';
 import { UserButton } from '@clerk/nextjs';
 
 export default function Home() {
-  console.log(`test`);
   return (
     <div>
       <UserButton afterSignOutUrl="/" />
+      <ModeToggle></ModeToggle>
     </div>
   );
 }
