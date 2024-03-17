@@ -4,7 +4,7 @@ import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -38,6 +38,14 @@ const formSchema = z.object({
 
 const initialModal = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [isMounted, setIsMounted] = useState(false);
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -51,6 +59,10 @@ const initialModal = () => {
   const onSubmit = async (valuee: z.infer<typeof formSchema>) => {
     console.log(valuee);
   };
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <Dialog open>
