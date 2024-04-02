@@ -32,7 +32,14 @@ const ServerIdlayout = async ({
     return redirect('/');
   }
 
-  return <div>{children}</div>;
+  return (
+    <div className="h-full">
+      <div className="fixed inset-y-0 z-20 hidden h-full w-60 flex-col border-[5px] border-red-100 md:flex">
+        Server Sidebar
+      </div>
+      <main className="h-full md:pl-60">{children}</main>
+    </div>
+  );
 };
 
 export default ServerIdlayout;
