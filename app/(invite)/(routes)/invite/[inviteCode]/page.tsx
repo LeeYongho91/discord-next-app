@@ -1,5 +1,11 @@
+interface InviteCodePageProps {
+  params: {
+    inviteCode: string;
+  };
+}
+
 const InviteCodePage = () => {
-  return <div>page</div>;
+  return <div>Hello Invite</div>;
 };
 
 export default InviteCodePage;
