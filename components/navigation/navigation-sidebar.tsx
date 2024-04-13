@@ -5,7 +5,7 @@ import { db } from '@/lib/db';
 import { Separator } from '@/components/ui/separator';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { NavigationItem } from './navigation-item';
-import { ModeToggle } from '../ui/mode-toggle';
+import { ModeToggle } from '@/components/mode-toggle';
 import { UserButton } from '@clerk/nextjs';
 
 const navigationSidebar = async () => {
