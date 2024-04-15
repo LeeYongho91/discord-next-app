@@ -85,6 +85,8 @@ const MembersModal = () => {
         },
       });
 
+      console.log(url);
+
       const response = await axios.patch(url, { role });
 
       console.log(response);
@@ -162,7 +164,7 @@ const MembersModal = () => {
                           </DropdownMenuPortal>
                         </DropdownMenuSub>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => onKick(member.id)}>
                           <Gavel className="mr-2 h-4 w-4" />
                           Kick
                         </DropdownMenuItem>
