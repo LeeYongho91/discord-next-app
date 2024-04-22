@@ -12,7 +12,7 @@ import { ServerSearch } from './server-search';
 import { Separator } from '../ui/separator';
 import { ServerSection } from './server-section';
 import { ServerChannel } from './server-channel';
-import { ServerMember } from './server-member';
+// import { ServerMember } from './server-member';
 
 interface ServerSidebarProps {
   serverId: string;
@@ -196,11 +196,11 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
               label="Members"
               server={server}
             />
-            <div className="space-y-[2px]">
+            {/* <div className="space-y-[2px]">
               {members.map((channel) => (
                 <ServerMember />
               ))}
-            </div>
+            </div> */}
           </div>
         )}
       </ScrollArea>
