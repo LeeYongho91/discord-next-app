@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/dialog';
 
 import { useModal } from '@/hooks/use-modal-store';
-import { ServerWithMemberWithProfiles } from '@/types';
+import { ServerWithMembersWithProfiles } from '@/types';
 import { ScrollArea } from '../ui/scroll-area';
 import { UserAvatar } from '@/components/user-avatar';
 import {
@@ -52,7 +52,7 @@ const MembersModal = () => {
 
   const isModalOpen = isOpen && type === 'members';
 
-  const { server } = data as { server: ServerWithMemberWithProfiles };
+  const { server } = data as { server: ServerWithMembersWithProfiles };
 
   const onKick = async (memberId: string) => {
     try {

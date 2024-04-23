@@ -1,7 +1,10 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import { Member, MemberRole, Profile, Server } from '@prisma/client';
 import { ShieldAlert, ShieldCheck } from 'lucide-react';
+import { useParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 interface ServerMemberProps {
@@ -18,7 +21,21 @@ const roleIconMap = {
 };
 
 const serverMember = ({ member, server }: ServerMemberProps) => {
-  return <div>server-member</div>;
+  const params = useParams();
+  const router = useRouter();
+
+  const icon = roleIconMap[member.role];
+
+  return (
+    <button
+      className={cn(
+        'group mb-1 flex w-full items-center gap-x-2 rounded-md px-2 py-2 transition hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50',
+        params?.memberId === member.id && 'bg-zinc-700/20',
+      )}
+    >
+      {icon}
+    </button>
+  );
 };
 
 export default serverMember;
