@@ -37,6 +37,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import axios from 'axios';
+import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 const formSchema = z.object({
   name: z
@@ -65,6 +67,14 @@ const CreateChannelModal = () => {
       type: channelType || ChannelType.TEXT,
     },
   });
+
+  useEffect(() => {
+    if (channelType) {
+      form.setValue('type', channelType);
+    } else {
+      form.setValue('type', ChannelType.TEXT);
+    }
+  }, [channelType, form]);
 
   const isLoading = form.formState.isSubmitting;
 
