@@ -35,7 +35,7 @@ const formSchema = z.object({
     message: 'Server name required.',
   }),
   imageUrl: z.string().min(1, {
-    message: 'Sever image is required.',
+    message: 'Server image is required.',
   }),
 });
 
@@ -45,7 +45,6 @@ const CreateServerModal = () => {
 
   const isModalOpen = isOpen && type === 'createServer';
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {

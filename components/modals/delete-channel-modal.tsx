@@ -26,7 +26,7 @@ const DeleteChannelModal = () => {
   const { server, channel } = data;
 
   const [isLoading, setIsLoading] = useState(false);
-  console.log(`test`);
+
   const onClick = async () => {
     try {
       setIsLoading(true);
