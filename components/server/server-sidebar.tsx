@@ -60,7 +60,7 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
       },
     },
   });
-  console.log(`test`);
+
   const textChannels = server?.channels.filter(
     (channel) => channel.type === ChannelType.TEXT,
   );
