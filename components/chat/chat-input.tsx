@@ -6,7 +6,7 @@ import * as z from 'zod';
 
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-
+console.log(`test`);
 interface ChatInputProps {
   apiUrl: string;
   query: Record<string, any>;
