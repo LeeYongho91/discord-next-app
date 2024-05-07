@@ -6,7 +6,8 @@ import * as z from 'zod';
 
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-console.log(`test`);
+import { Plus, Smile } from 'lucide-react';
+
 interface ChatInputProps {
   apiUrl: string;
   query: Record<string, any>;
@@ -42,7 +43,25 @@ const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <div className="relative p-4 pb-6">fda</div>
+                <div className="relative p-4 pb-6">
+                  <button
+                    className="hover-bg-zinc-600 absolute left-8 top-7 flex h-[24px] w-[24px]
+                    items-center justify-center rounded-full bg-zinc-500 p-1
+                    transition hover:bg-zinc-600 dark:bg-zinc-400 dark:hover:bg-zinc-300"
+                    type="button"
+                    onClick={() => {}}
+                  >
+                    <Plus className="text-white dark:text-[#313338]" />
+                  </button>
+                  <Input
+                    disabled={isLoading}
+                    className="border-0 border-none bg-zinc-200/90 px-14 py-6
+                    focus-visible:ring-0 focus-visible:ring-offset-0 dark:bg-zinc-700/75"
+                  />
+                  <div className="absolute right-8 top-7">
+                    <Smile />
+                  </div>
+                </div>
               </FormControl>
             </FormItem>
           )}
