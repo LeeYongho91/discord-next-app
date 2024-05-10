@@ -3,10 +3,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Plus, Smile } from 'lucide-react';
+import axios from 'axios';
+import qs from 'query-string';
 
 interface ChatInputProps {
   apiUrl: string;
@@ -24,14 +25,22 @@ const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       content: '',
-      name: '',
     },
   });
 
   const isLoading = form.formState.isSubmitting;
 
-  const onSubmit = async (value: z.infer<typeof formSchema>) => {
-    console.log(value);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const url = qs.stringifyUrl({
+        url: apiUrl,
+        query,
+      });
+
+      await axios.post(url, values);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -59,6 +68,7 @@ const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
                     text-zinc-600 focus-visible:ring-0 focus-visible:ring-offset-0 dark:bg-zinc-700/75
                     dark:text-zinc-200"
                     placeholder={`Message ${type === 'conversation' ? name : '#' + name}`}
+                    {...field}
                   />
                   <div className="absolute right-8 top-7">
                     <Smile />
