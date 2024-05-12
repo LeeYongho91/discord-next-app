@@ -4,6 +4,8 @@ import { NextApiResponseServerIo } from '@/types';
 import currentProfilePages from '@/lib/current-profile-pages';
 import { db } from '@/lib/db';
 
+console.log(`test`);
+
 export default async function hanlder(
   req: NextApiRequest,
   res: NextApiResponseServerIo,
