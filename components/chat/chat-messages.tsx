@@ -16,7 +16,7 @@ interface ChatMessagesProps {
 
 import React from 'react';
 import ChatWelcome from './chat-welcome';
-
+console.log(`test`);
 const ChatMessages = ({
   name,
   member,
