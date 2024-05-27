@@ -4,7 +4,7 @@ import { NextApiResponseServerIo } from '@/types';
 import currentProfilePages from '@/lib/current-profile-pages';
 import { db } from '@/lib/db';
 
-export default async function hanlder(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponseServerIo,
 ) {
@@ -17,22 +17,20 @@ export default async function hanlder(
     const { content, fileUrl } = req.body;
     const { serverId, channelId } = req.query;
 
-    console.log(fileUrl);
-
     if (!profile) {
       return res.status(401).json({ error: 'Unauthorized' });
     }
 
     if (!serverId) {
-      return res.status(401).json({ error: 'Server ID missing' });
+      return res.status(400).json({ error: 'Server ID missing' });
     }
 
     if (!channelId) {
-      return res.status(401).json({ error: 'Channel ID missing' });
+      return res.status(400).json({ error: 'Channel ID missing' });
     }
 
     if (!content) {
-      return res.status(401).json({ error: 'Channel missing' });
+      return res.status(400).json({ error: 'Content missing' });
     }
 
     const server = await db.server.findFirst({
@@ -91,6 +89,7 @@ export default async function hanlder(
     const channelKey = `chat:${channelId}:messages`;
 
     res?.socket?.server?.io?.emit(channelKey, message);
+
     return res.status(200).json(message);
   } catch (error) {
     console.log('[MESSAGES_POST]', error);
